@@ -1,0 +1,27 @@
+{
+  "name": "Комната 1",
+  "isFinish": false,
+  "isEmpty": true,
+  "next": {
+    "leftRoom": {
+      "name": "Комната 2",
+      "isFinish": false,
+      "isEmpty": true,
+      "next": {
+        "leftRoom": null,
+        "rightRoom": {
+          "name": "Комната 5",
+          "isFinish": false,
+          "isEmpty": true,
+          "next": null
+        }
+      }
+    },
+    "rightRoom": {
+      "name": "Комната 3",
+      "isFinish": true,
+      "isEmpty": true,
+      "next": null
+    }
+  }
+}
