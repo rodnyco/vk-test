@@ -12,9 +12,15 @@ class Room
 
     //TODO: add box or monster
 
-    public bool $isEmpty;
-    public bool $isFinish;
+    public bool   $isEmpty;
+    public bool   $isFinish;
     public string $name;
+
+    public function __construct(Room|null $prevRoom, bool $isFinish)
+    {
+        $this->prevRoom  = $prevRoom;
+        $this->isFinish  = $isFinish;
+    }
 
     /**
      * Return the left room if it exists
@@ -41,30 +47,6 @@ class Room
     public function getPrevRoom()
     {
         return $this->prevRoom;
-    }
-
-    /**
-     * Returns information about the existence of objects in the room for interaction (box or monster)
-     * @return bool
-     */
-    public function isEmpty()
-    {
-        return $this->isEmpty;
-    }
-
-    /**
-     * Return true if room is finish
-     * @return bool
-     */
-    public function isFinish()
-    {
-        return $this->isFinish;
-    }
-
-    public function setPrevRoom(Room|null $prevRoom)
-    {
-        $this->prevRoom = $prevRoom;
-        return $this;
     }
 
     public function setLeftRoom(Room|null $leftRoom)

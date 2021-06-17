@@ -6,9 +6,11 @@ use App\Model\Room;
 
 class Map
 {
+    private Room $firstRoom;
+
     public function getFirstRoom()
     {
-        return 1;
+        return $this->firstRoom;
     }
 
     public function generateMap($jsonMap)
@@ -16,10 +18,8 @@ class Map
         $arrMap = json_decode($jsonMap,true);
         $roomsQueue = [];
 
-        $firstRoom = new Room();
+        $firstRoom = new Room(null, $arrMap["isFinish"]);
         $firstRoom->isEmpty = $arrMap["isEmpty"];
-        $firstRoom->isFinish = $arrMap["isFinish"];
-        $firstRoom->setPrevRoom(null);
         $firstRoom->name = $arrMap["name"];
 
         array_push($roomsQueue, [
@@ -32,10 +32,8 @@ class Map
             $next = $roomsQueue[0]["next"];
 
             if($next["leftRoom"] != null) {
-                $newLeftRoom = new Room();
+                $newLeftRoom = new Room($prevRoom, $next["leftRoom"]["isFinish"]);
                 $newLeftRoom->isEmpty = $next["leftRoom"]["isEmpty"];
-                $newLeftRoom->isFinish = $next["leftRoom"]["isFinish"];
-                $newLeftRoom->setPrevRoom($prevRoom);
                 $prevRoom->setLeftRoom($newLeftRoom);
                 $newLeftRoom->name = $next["leftRoom"]["name"];
                 array_push($roomsQueue, [
@@ -47,10 +45,8 @@ class Map
             }
 
             if($next["rightRoom"] != null) {
-                $newRightRoom = new Room();
+                $newRightRoom = new Room($prevRoom, $next["rightRoom"]["isFinish"]);
                 $newRightRoom->isEmpty = $next["rightRoom"]["isEmpty"];
-                $newRightRoom->isFinish = $next["rightRoom"]["isFinish"];
-                $newRightRoom->setPrevRoom($prevRoom);
                 $prevRoom->setRightRoom($newRightRoom);
                 $newRightRoom->name = $next["rightRoom"]["name"];
                 array_push($roomsQueue, [
