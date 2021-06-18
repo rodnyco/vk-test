@@ -60,4 +60,13 @@ class Room
         $this->rightRoom = $rightRoom;
         return $this;
     }
+
+    public function getNearbyRooms():array
+    {
+        return [
+            'prev'  => $this->getPrevRoom(),
+            'left'  => $this->getLeftRoom(),
+            'right' => $this->getRightRoom()
+        ];
+    }
 }
