@@ -8,6 +8,11 @@ class Person
     private string $name;
     private Room   $location;
 
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
     public function move(Room $room)
     {
         $this->location = $room;
