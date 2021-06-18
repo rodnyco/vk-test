@@ -14,6 +14,7 @@ class Room
 
     public bool   $isEmpty;
     public bool   $isFinish;
+    //TODO: Refactor to private access
     public string $name;
 
     public function __construct(Room|null $prevRoom, bool $isFinish)
@@ -68,5 +69,10 @@ class Room
             'left'  => $this->getLeftRoom(),
             'right' => $this->getRightRoom()
         ];
+    }
+
+    public function getName():string
+    {
+        return $this->name;
     }
 }

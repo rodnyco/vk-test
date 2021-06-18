@@ -35,7 +35,7 @@ class Game
         while (!$person->getLocation()->isFinish) {
             $roomToMove = $this->getRoomToMove();
             $person->move($roomToMove);
-            print_r($person->getLocation());
+            $infoView->displayView();
         }
     }
 

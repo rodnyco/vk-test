@@ -16,13 +16,23 @@ class InformationView
 
     public function displayView():void
     {
-        echo $this->getPersonInfo();
+        echo $this->getRoomInfo();
     }
 
-    private function getPersonInfo():string
+    private function getRoomInfo():string
     {
+        $location = $this->person->getLocation();
+
+        $currentRoom = $location->getName();
+        $prevRoom = $location->getPrevRoom();
+        $leftRoom = $location->getLeftRoom();
+        $rightRoom = $location->getRightRoom();
+
         return
-            "Имя персонажа: " . $this->person->getName() . "
-        ";
+            "\n Текущая комната: "    . $currentRoom .
+            "\n Предыдущая комната: " . ($prevRoom  != null ? $prevRoom->getName()  : "Нет комнаты") .
+            "\n Комната налево: "     . ($leftRoom  != null ? $leftRoom->getName()  : "Нет комнаты") .
+            "\n Комната направо: "    . ($rightRoom != null ? $rightRoom->getName() : "Нет комнаты")
+        ;
     }
 }
