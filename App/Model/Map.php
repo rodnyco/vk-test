@@ -22,6 +22,8 @@ class Map
         $firstRoom->isEmpty = $arrMap["isEmpty"];
         $firstRoom->name = $arrMap["name"];
 
+        $this->firstRoom = $firstRoom;
+
         array_push($roomsQueue, [
             "room" => $firstRoom,
             "next" => $arrMap["next"]
@@ -59,6 +61,5 @@ class Map
 
             array_shift($roomsQueue);
         }
-        print_r($firstRoom->getLeftRoom());
     }
 }

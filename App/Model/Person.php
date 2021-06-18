@@ -1,26 +1,22 @@
 <?php
 
 namespace App\Model;
-
+use App\Model\Room;
 
 class Person
 {
     private string $name;
-    private Room $location;
+    private Room   $location;
 
-    public function moveToPrev()
+    public function move(Room $room)
     {
-        //$this->location = $this->location->getPrevRoom();
+        $this->location = $room;
+        return $this;
     }
 
-    public function moveToLeft()
+    public function getLocation()
     {
-        //
-    }
-
-    public function moveToRight()
-    {
-        //
+        return $this->location;
     }
 
     public function setName(string $name)

@@ -2,6 +2,9 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use App\Model\Game;
+use App\Model\Person;
 
-$game = new Game();
+$person = new Person();
+$game = new Game($person);
+
 $game->start("./configs/map.json");
