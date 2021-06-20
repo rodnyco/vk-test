@@ -33,4 +33,9 @@ class Person
     {
         return $this->name;
     }
+
+    private function interactWithRoom()
+    {
+
+    }
 }
