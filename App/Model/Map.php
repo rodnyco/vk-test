@@ -35,9 +35,10 @@ class Map
             $prevRoom = $roomsQueue[0]["room"];
             $next = $roomsQueue[0]["next"];
 
-            if($next["leftRoom"] != null) {
-                $interactiveObject = ($next["leftRoom"]["object"] != null ?
-                                        $this->getInteractiveObject($next["leftRoom"]["object"]) : null);
+            if(isset($next["leftRoom"]) && $next["leftRoom"] != null) {
+                $interactiveObject = (isset($next["leftRoom"]["object"]) ?
+                    $this->getInteractiveObject($next["leftRoom"]["object"]) : null);
+
                 $newLeftRoom = new Room($prevRoom, $next["leftRoom"]["isFinish"], $interactiveObject);
                 $newLeftRoom->isEmpty = $next["leftRoom"]["isEmpty"];
                 $prevRoom->setLeftRoom($newLeftRoom);
@@ -50,9 +51,10 @@ class Map
                 $prevRoom->setLeftRoom(null);
             }
 
-            if($next["rightRoom"] != null) {
-                $interactiveObject = ($next["rightRoom"]["object"] != null ?
+            if(isset($next["rightRoom"]) && $next["rightRoom"] != null) {
+                $interactiveObject = (isset($next["rightRoom"]["object"]) ?
                     $this->getInteractiveObject($next["rightRoom"]["object"]) : null);
+
                 $newRightRoom = new Room($prevRoom, $next["rightRoom"]["isFinish"], $interactiveObject);
                 $newRightRoom->isEmpty = $next["rightRoom"]["isEmpty"];
                 $prevRoom->setRightRoom($newRightRoom);
