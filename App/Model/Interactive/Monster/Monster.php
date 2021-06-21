@@ -34,7 +34,13 @@ class Monster implements InteractiveInterface
 
     public function toDamage(): void
     {
-        $this->power = $this->power - $this->selfDamage;
+        $damage = $this->power - $this->selfDamage;
+        if($damage >= 0) {
+            $this->power = $damage;
+        } else {
+            $this->power = 0;
+            $this->kill();
+        }
     }
 
     /**
