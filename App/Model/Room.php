@@ -4,23 +4,30 @@
 namespace App\Model;
 
 
+use App\Model\Interactive\InteractiveInterface;
+
 class Room
 {
     private Room|null $leftRoom;
     private Room|null $rightRoom;
     private Room|null $prevRoom;
 
-    //TODO: add box or monster
+    private InteractiveInterface|null $interactiveObject;
 
     public bool   $isEmpty;
     public bool   $isFinish;
     //TODO: Refactor to private access
     public string $name;
 
-    public function __construct(Room|null $prevRoom, bool $isFinish)
+    public function __construct(
+        Room|null $prevRoom,
+        bool $isFinish,
+        InteractiveInterface|null $interactiveObject = null
+    )
     {
-        $this->prevRoom  = $prevRoom;
-        $this->isFinish  = $isFinish;
+        $this->prevRoom          = $prevRoom;
+        $this->isFinish          = $isFinish;
+        $this->interactiveObject = $interactiveObject;
     }
 
     /**
@@ -74,5 +81,14 @@ class Room
     public function getName():string
     {
         return $this->name;
+    }
+
+    /**
+     * Return object for interactive
+     * @return InteractiveInterface
+     */
+    public function getInteractiveObject():InteractiveInterface|null
+    {
+        return $this->interactiveObject;
     }
 }

@@ -6,7 +6,11 @@
     "leftRoom": {
       "name": "Комната 2",
       "isFinish": false,
-      "isEmpty": true,
+      "isEmpty": false,
+      "object": {
+        "objectName": "box",
+        "objectType": "simple"
+      },
       "next": {
         "leftRoom": null,
         "rightRoom": {

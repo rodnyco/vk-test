@@ -7,15 +7,18 @@ class Person
 {
     private string $name;
     private Room   $location;
+    private int    $points;
 
     public function __construct(string $name)
     {
-        $this->name = $name;
+        $this->name   = $name;
+        $this->points = 0;
     }
 
     public function move(Room $room)
     {
         $this->location = $room;
+        $this->interactWithRoom();
         return $this;
     }
 
@@ -34,8 +37,16 @@ class Person
         return $this->name;
     }
 
-    private function interactWithRoom()
+    private function interactWithRoom():void
     {
+        if($this->location->isEmpty === true) return;
 
+        $interObj = $this->location->getInteractiveObject();
+        $interObj->startInteracting();
+        $creditedPoints = $interObj->getPoints();
+        $this->points = $this->points + $creditedPoints;
+        
+        $this->location->isEmpty = true;
+        print_r($this);
     }
 }

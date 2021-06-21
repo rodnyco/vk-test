@@ -2,9 +2,7 @@
 
 
 namespace App\Model;
-use App\Model\Map;
-use App\Model\Person;
-use App\Model\Room;
+use App\Model\Interactive\Box\BoxFactory;
 use App\View\InformationView;
 use App\Handler;
 

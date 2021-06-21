@@ -2,6 +2,8 @@
 
 
 namespace App\Model;
+use App\Model\Interactive\InteractiveFactory;
+use App\Model\Interactive\InteractiveInterface;
 use App\Model\Room;
 
 class Map
@@ -34,7 +36,9 @@ class Map
             $next = $roomsQueue[0]["next"];
 
             if($next["leftRoom"] != null) {
-                $newLeftRoom = new Room($prevRoom, $next["leftRoom"]["isFinish"]);
+                $interactiveObject = ($next["leftRoom"]["object"] != null ?
+                                        $this->getInteractiveObject($next["leftRoom"]["object"]) : null);
+                $newLeftRoom = new Room($prevRoom, $next["leftRoom"]["isFinish"], $interactiveObject);
                 $newLeftRoom->isEmpty = $next["leftRoom"]["isEmpty"];
                 $prevRoom->setLeftRoom($newLeftRoom);
                 $newLeftRoom->name = $next["leftRoom"]["name"];
@@ -47,7 +51,9 @@ class Map
             }
 
             if($next["rightRoom"] != null) {
-                $newRightRoom = new Room($prevRoom, $next["rightRoom"]["isFinish"]);
+                $interactiveObject = ($next["rightRoom"]["object"] != null ?
+                    $this->getInteractiveObject($next["rightRoom"]["object"]) : null);
+                $newRightRoom = new Room($prevRoom, $next["rightRoom"]["isFinish"], $interactiveObject);
                 $newRightRoom->isEmpty = $next["rightRoom"]["isEmpty"];
                 $prevRoom->setRightRoom($newRightRoom);
                 $newRightRoom->name = $next["rightRoom"]["name"];
@@ -61,5 +67,13 @@ class Map
 
             array_shift($roomsQueue);
         }
+    }
+
+    private function getInteractiveObject(array $obj): InteractiveInterface
+    {
+        return (new InteractiveFactory())->createObject(
+            $obj["objectName"],
+            $obj["objectType"]
+        );
     }
 }
