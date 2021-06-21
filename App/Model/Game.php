@@ -39,6 +39,7 @@ class Game
             $interactiveView->displayView();
             $roomToMove->isEmpty = true;
         }
+        $infoView->displayWinView();
     }
 
     public function getPerson()

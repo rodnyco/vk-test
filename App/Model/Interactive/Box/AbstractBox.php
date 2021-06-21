@@ -21,8 +21,6 @@ abstract class AbstractBox implements InteractiveInterface
      */
     public function startInteracting(): void
     {
-        // TODO: return InteractionView
-        echo 'startInteracting';
         $this->generatePoints();
     }
 

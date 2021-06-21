@@ -18,7 +18,6 @@ class Battle
     public function start()
     {
         $monster = $this->monster;
-        echo "\n \n";
         while (!$monster->isDefeated()) {
             $monsterPower = $monster->getPower();
             $randomInt = $this->getRandomNumber();

@@ -16,7 +16,13 @@ class InformationView
 
     public function displayView(): void
     {
-        echo $this->getPersonInfo() . "\n" . $this->getRoomInfo() ;
+        echo "\n" . $this->getPersonInfo() . "\n" . $this->getRoomInfo() ;
+    }
+
+    public function displayWinView(): void
+    {
+        echo "\n Вы победили! Набранное количество очков: " . $this->person->getPoints() .
+             "\n Результат записан в файл results.txt \n";
     }
 
     private function getRoomInfo(): string
@@ -32,7 +38,7 @@ class InformationView
             "\n Текущая комната: "    . $currentRoom .
             "\n Предыдущая комната: " . ($prevRoom  != null ? $prevRoom->getName()  : "Нет комнаты") .
             "\n Комната налево: "     . ($leftRoom  != null ? $leftRoom->getName()  : "Нет комнаты") .
-            "\n Комната направо: "    . ($rightRoom != null ? $rightRoom->getName() : "Нет комнаты")
+            "\n Комната направо: "    . ($rightRoom != null ? $rightRoom->getName() : "Нет комнаты") . "\n"
         ;
     }
 

@@ -27,12 +27,13 @@ class InteractiveView
     {
         $location = $this->person->getLocation();
         $interactiveObject = $location->getInteractiveObject();
-
+        $info = "\n";
         if ($location->isEmpty === false) {
-            return "\n В комнате находится " . $interactiveObject->getTitle() ."! Вы набрали ". $this->person->getCreditedPoints() ." очков!!!";
+            $info .= " В комнате находится " . $interactiveObject->getTitle() ."! Вы набрали ". $this->person->getCreditedPoints() ." очков!!!";
         } else {
-            return "\n Комната пуста :(";
+            $info .= " Комната пуста :(";
         }
+        return $info . "\n";
     }
 
 }
