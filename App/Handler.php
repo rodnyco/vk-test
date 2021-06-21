@@ -6,6 +6,7 @@ class Handler
     public function handleMove(bool $isPrev, bool $isLeft, bool $isRight):string
     {
         $moves = [
+            0  => false,
             1  => $isPrev,
             2  => $isLeft,
             3  => $isRight
