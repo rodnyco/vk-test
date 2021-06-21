@@ -40,6 +40,7 @@ class Game
             $roomToMove->isEmpty = true;
         }
         $infoView->displayWinView();
+        $this->writeResult();
     }
 
     public function getPerson()
@@ -59,5 +60,14 @@ class Game
         );
 
         return $nearbyRooms[$personMoveSide];
+    }
+
+    private function writeResult(): void
+    {
+        $results = [
+            'Имя персонажа' => $this->person->getName(),
+            'Набранное количество очков' => $this->person->getPoints()
+        ];
+        file_put_contents("../../../data/results.txt", print_r($results), FILE_APPEND);
     }
 }
