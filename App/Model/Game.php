@@ -5,6 +5,7 @@ namespace App\Model;
 use App\Model\Interactive\Box\BoxFactory;
 use App\View\InformationView;
 use App\Handler;
+use App\View\InteractiveView;
 
 class Game
 {
@@ -28,12 +29,15 @@ class Game
 
         $person = $this->person;
         $infoView = new InformationView($this);
+        $interactiveView = new InteractiveView($this);
 
         $infoView->displayView();
         while (!$person->getLocation()->isFinish) {
             $roomToMove = $this->getRoomToMove();
             $person->move($roomToMove);
             $infoView->displayView();
+            $interactiveView->displayView();
+            $roomToMove->isEmpty = true;
         }
     }
 

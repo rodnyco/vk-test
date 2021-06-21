@@ -9,14 +9,18 @@
       "isEmpty": false,
       "object": {
         "objectName": "box",
-        "objectType": "simple"
+        "objectType": "premium"
       },
       "next": {
         "leftRoom": null,
         "rightRoom": {
           "name": "Комната 5",
           "isFinish": false,
-          "isEmpty": true,
+          "isEmpty": false,
+          "object": {
+            "objectName": "box",
+            "objectType": "simple"
+          },
           "next": null
         }
       }

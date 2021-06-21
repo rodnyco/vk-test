@@ -5,16 +5,25 @@ use App\Model\Interactive\InteractiveInterface;
 
 abstract class AbstractBox implements InteractiveInterface
 {
-    protected int $rangePointsFrom;
-    protected int $rangePointsTo;
+    protected string $title;
+    protected int    $rangePointsFrom;
+    protected int    $rangePointsTo;
+
+    private   int $points;
+
+    public function getTitle(): string
+    {
+        return $this->title . " клад";
+    }
 
     /**
      * @inheritDoc
      */
     public function startInteracting(): void
     {
-        // TODO: Implement startInteracting() method.
+        // TODO: return InteractionView
         echo 'startInteracting';
+        $this->generatePoints();
     }
 
     /**
@@ -23,10 +32,16 @@ abstract class AbstractBox implements InteractiveInterface
      */
     public function getPoints(): int
     {
-        // TODO: Implement getPoints() method.
-        return rand(
+        return $this->points;
+    }
+
+    private function generatePoints(): void
+    {
+        $generatedPoints = rand(
             $this->rangePointsFrom,
             $this->rangePointsTo
         );
+
+        $this->points = $generatedPoints;
     }
 }

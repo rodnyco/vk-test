@@ -14,12 +14,12 @@ class InformationView
         $this->person = $game->getPerson();
     }
 
-    public function displayView():void
+    public function displayView(): void
     {
-        echo $this->getRoomInfo();
+        echo $this->getPersonInfo() . "\n" . $this->getRoomInfo() ;
     }
 
-    private function getRoomInfo():string
+    private function getRoomInfo(): string
     {
         $location = $this->person->getLocation();
 
@@ -34,5 +34,15 @@ class InformationView
             "\n Комната налево: "     . ($leftRoom  != null ? $leftRoom->getName()  : "Нет комнаты") .
             "\n Комната направо: "    . ($rightRoom != null ? $rightRoom->getName() : "Нет комнаты")
         ;
+    }
+
+    private function getPersonInfo(): string
+    {
+        $person = $this->person;
+
+        return
+            "\n Имя персонажа: "    . $person->getName() .
+            "\n Количество очков: " . $person->getPoints()
+            ;
     }
 }

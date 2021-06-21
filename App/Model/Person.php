@@ -8,11 +8,13 @@ class Person
     private string $name;
     private Room   $location;
     private int    $points;
+    private int    $creditedPoint;
 
     public function __construct(string $name)
     {
         $this->name   = $name;
         $this->points = 0;
+        $this->creditedPoint = 0;
     }
 
     public function move(Room $room)
@@ -37,6 +39,16 @@ class Person
         return $this->name;
     }
 
+    public function getPoints()
+    {
+        return $this->points;
+    }
+
+    public function getCreditedPoints()
+    {
+        return $this->creditedPoint;
+    }
+
     private function interactWithRoom():void
     {
         if($this->location->isEmpty === true) return;
@@ -44,9 +56,9 @@ class Person
         $interObj = $this->location->getInteractiveObject();
         $interObj->startInteracting();
         $creditedPoints = $interObj->getPoints();
+
+        $this->creditedPoint = $creditedPoints;
         $this->points = $this->points + $creditedPoints;
 
-        $this->location->isEmpty = true;
-        print_r($this);
     }
 }
