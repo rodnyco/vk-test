@@ -8,8 +8,8 @@
       "isFinish": false,
       "isEmpty": false,
       "object": {
-        "objectName": "box",
-        "objectType": "premium"
+        "objectName": "monster",
+        "objectType": "middle"
       },
       "next": {
         "leftRoom": null,

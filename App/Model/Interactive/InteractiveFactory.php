@@ -5,6 +5,7 @@ namespace App\Model\Interactive;
 
 
 use App\Model\Interactive\Box\BoxFactory;
+use App\Model\Interactive\Monster\MonsterFactory;
 
 class InteractiveFactory
 {
@@ -19,6 +20,8 @@ class InteractiveFactory
         if ($objectName === "box") {
             return (new BoxFactory())->createBox($objectType);
         }
-        //if ($objectName === "monster") return new Monster();
+        if ($objectName === "monster") {
+            return (new MonsterFactory())->createMonster($objectType);
+        }
     }
 }
