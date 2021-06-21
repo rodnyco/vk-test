@@ -8,6 +8,11 @@ use App\Model\Interactive\InteractiveInterface;
 
 class BoxFactory
 {
+    /**
+     * Create box by type
+     * @param $type
+     * @return InteractiveInterface
+     */
     public function createBox($type): InteractiveInterface
     {
         switch ($type) {

@@ -45,7 +45,7 @@ class Person
         $interObj->startInteracting();
         $creditedPoints = $interObj->getPoints();
         $this->points = $this->points + $creditedPoints;
-        
+
         $this->location->isEmpty = true;
         print_r($this);
     }

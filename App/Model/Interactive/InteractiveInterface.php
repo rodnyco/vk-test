@@ -7,12 +7,6 @@ namespace App\Model\Interactive;
 interface InteractiveInterface
 {
     /**
-     * Create interactive Object with parameters
-     * @return $this
-     */
-    public function create(string $type):InteractiveInterface;
-
-    /**
      * Method to start interaction
      * @return void
      */

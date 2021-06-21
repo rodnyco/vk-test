@@ -11,14 +11,6 @@ abstract class AbstractBox implements InteractiveInterface
     /**
      * @inheritDoc
      */
-    public function create(string $type): InteractiveInterface
-    {
-
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function startInteracting(): void
     {
         // TODO: Implement startInteracting() method.
@@ -26,7 +18,8 @@ abstract class AbstractBox implements InteractiveInterface
     }
 
     /**
-     * @inheritDoc
+     * Return random points between min and max value
+     * @return int points
      */
     public function getPoints(): int
     {
